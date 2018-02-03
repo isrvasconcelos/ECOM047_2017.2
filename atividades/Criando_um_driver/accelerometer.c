@@ -7,7 +7,8 @@ typedef enum {
 	kIdle = 0,
 	kOpen,
 	kRegisterSelection,
-	kOperation
+	kOperation,
+	kEnd
 } accelerometerState_t;
 
 typedef enum {
@@ -31,14 +32,14 @@ static accelerometerState_t __state = kIdle;
 static accelerometOperation_t __op = kNoneOp;
 static accelerometerRegister_t __register = kNoneRegister;
 
-static const uint8_t __accelerations[ACCELERATION_BUFFER_SIZE] = {238, 54, 191, 174, 103, 228, 184, 57, 206, 13};
+static uint8_t __accelerations[ACCELERATION_BUFFER_SIZE] = {238, 54, 191, 174, 103, 228, 184, 57, 206, 13};
 
 static mode_t __lowPowerMode = runMode;
 static uint8_t __accelerationCursor = 0;
 
 /*********************Private functions*****************/
 void incrementeAccelerationCursor(void) {
-	if (__accelerationCursor == ACCELERATION_BUFFER_SIZE) {
+	if (__accelerationCursor == ACCELERATION_BUFFER_SIZE - 1) {
 		__accelerationCursor = 0;
 	}
 	else {
@@ -58,10 +59,10 @@ status_t registerChanges(uint8_t data) {
 			__lowPowerMode = data;
 			break;
 		case kAcceleration:
+			__accelerations[__accelerationCursor] = data;
 #if (ACCELEROMETER_LOG_EN == 1)
 			printf("Acceleration: %d\n", __accelerations[__accelerationCursor]);
 #endif
-			__accelerations[__accelerationCursor] = data;
 			incrementeAccelerationCursor();
 			break;
 		default:
@@ -80,15 +81,18 @@ status_t readValues(uint8_t *data) {
 			break;
 		case kAcceleration:
 			*data = __accelerations[__accelerationCursor];
+			printf("Acceleration: %d\n", __accelerations[__accelerationCursor]);
 			incrementeAccelerationCursor();
 			break;
 		default:
 			break;
 	}
+
+	return ok;
 }
 
 /*********************Public functions*****************/
-status_t write(uint8_t data) {
+status_t accelerometerWrite(uint8_t data) {
 #if (ACCELEROMETER_LOG_EN == 1)
 	printf("Current state: %d\n", __state);
 #endif
@@ -112,7 +116,7 @@ status_t write(uint8_t data) {
 				__state = kRegisterSelection;
 				__op = data;
 #if (ACCELEROMETER_LOG_EN == 1)
-				printf("Current op: %d\n", __op);
+				printf("Current op: %x\n", __op);
 #endif
 			}
 			else {
@@ -127,7 +131,7 @@ status_t write(uint8_t data) {
 				__state = kOperation;
 				__register = data;
 #if (ACCELEROMETER_LOG_EN == 1)
-				printf("Register selected: %d\n", __register);
+				printf("Register selected: %x\n", __register);
 #endif
 			}
 			else {
@@ -135,8 +139,16 @@ status_t write(uint8_t data) {
 			}
 			break;
 		case kOperation:
-			__state = kIdle;
+			__state = kEnd;
 			status = registerChanges(data);
+			break;
+		case kEnd:
+			if (data != ADDRESS) {
+				status = fail;
+			}
+			else {
+				__state = kIdle;
+			}
 			break;
 		default:
 			__state = kIdle;
@@ -151,7 +163,7 @@ status_t write(uint8_t data) {
 	return status;
 }
 
-status_t read(uint8_t *data) {
+status_t accelerometerRead(uint8_t *data) {
 #if (ACCELEROMETER_LOG_EN == 1)
 	printf("Current state: %d\n", __state);
 #endif
@@ -160,7 +172,7 @@ status_t read(uint8_t *data) {
 
 	switch (__state) {
 		case kOperation:
-			__state = kIdle;
+			__state = kEnd;
 			status = readValues(data);
 			break;
 		default:
