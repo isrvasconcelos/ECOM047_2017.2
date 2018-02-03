@@ -3,7 +3,8 @@
 
 #include "types.h"
 
-#define ACCELEROMETER_LOG_EN 0
+//to disable the accelerometer's log set the value of this define to 0
+#define ACCELEROMETER_LOG_EN 1
 
 status_t write(uint8_t data);
 status_t read(uint8_t *data);

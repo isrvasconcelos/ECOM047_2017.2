@@ -2,6 +2,7 @@
 #define __TYPES_H__
 
 #include <stdint.h>
+#include <stdio.h>
 
 typedef enum {
 	ok = 0,
