@@ -1,12 +1,12 @@
-#AVISOS IMPORTANTES
+# AVISOS IMPORTANTES
 
-##Restrições da Blockchain
+## Restrições da Blockchain
 
 * A blockchain deve possuir no máximo 100 blocos.
 * O array que representa a blockchain deve ser Singleton. Ou seja, só pode haver uma instância deste array e deve ser privada.
 * Os nomes das funções devem seguir a convenção de nomes da Apple, do [Core Foundation](https://developer.apple.com/library/content/documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/NamingConventions.html).
 
-##Funções da Blockchain
+## Funções da Blockchain
 * **Construtor**
   - Descrição: Cria uma blockchain. Ou seja, limpa o array que representa a cadeia, gera o bloco gênesis e adiciona-o na cadeia.
   - Parametros: Nenhum.
