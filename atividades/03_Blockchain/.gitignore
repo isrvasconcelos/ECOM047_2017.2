@@ -1,0 +1,6 @@
+ICBlockchain*
+.cproject
+.project
+.settings/language.settings.xml
+build/*
+main.c
