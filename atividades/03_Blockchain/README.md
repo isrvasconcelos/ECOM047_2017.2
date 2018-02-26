@@ -5,6 +5,7 @@
 * A blockchain deve possuir no máximo 100 blocos, sem contar o bloco gênesis.
 * O array que representa a blockchain deve ser Singleton. Ou seja, só pode haver uma instância deste array e deve ser privada.
 * Os nomes das funções devem seguir a convenção de nomes da Apple, do [Core Foundation](https://developer.apple.com/library/content/documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/NamingConventions.html).
+* A sigla do projeto que vamos utilizar será IC.
 
 ## Funções da Blockchain
 * **Construtor**
