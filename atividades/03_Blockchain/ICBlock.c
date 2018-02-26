@@ -7,6 +7,8 @@
 
 #include "ICBlock.h"
 
+static unsigned char __tempData[HASH_STR_SIZE + BLOCK_DATA_STR_SIZE];
+
 /***************PRIVATE FUNCTIONS*****************/
 int hexaToString(char *output, uint64_t data, uint8_t sizeInBytes) {
 	uint64_t mask = 0xFFUL << (8*(sizeInBytes-1));
@@ -27,13 +29,12 @@ int hexaToString(char *output, uint64_t data, uint8_t sizeInBytes) {
 
 /***************PUBLIC FUNCTIONS*****************/
 void ICHashCreate(ICHash *hash, ICBlockData *data, ICHash *previousHash) {
-	unsigned char tempData[HASH_STR_SIZE + BLOCK_DATA_STR_SIZE];
 	int offset = 0;
 
-	offset += ICBlockDataToString(tempData+offset, data);
-	offset += ICHashToString(tempData+offset, previousHash);
+	offset += ICBlockDataToString(__tempData+offset, data);
+	offset += ICHashToString(__tempData+offset, previousHash);
 
-	unsigned char *tempHash = SHA256(tempData, strlen(tempData), 0);
+	unsigned char *tempHash = SHA256(__tempData, strlen(__tempData), 0);
 
 	memcpy(hash->hash, tempHash, HASH_SIZE);
 }
