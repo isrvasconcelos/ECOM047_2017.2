@@ -2,7 +2,7 @@
 
 ## Restrições da Blockchain
 
-* A blockchain deve possuir no máximo 100 blocos.
+* A blockchain deve possuir no máximo 100 blocos, sem contar o bloco gênesis.
 * O array que representa a blockchain deve ser Singleton. Ou seja, só pode haver uma instância deste array e deve ser privada.
 * Os nomes das funções devem seguir a convenção de nomes da Apple, do [Core Foundation](https://developer.apple.com/library/content/documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/NamingConventions.html).
 
@@ -25,7 +25,7 @@
 * **Obter a cadeia**
   - Descrição: Retorna o array que representa a cadeia.
   - Parametros: Nenhum.
-  - Retonos: Um array de blocos, que representa a cadeia.
+  - Retonos: Um array de blocos, que representa a cadeia e o tamanho da cadeia.
   
 * **Minerar um novo bloco**
   - Descrição: Esta função é responsável por gerar um novo bloco e adiciona-lo na cadeia, a partir dos parâmetros da função.
