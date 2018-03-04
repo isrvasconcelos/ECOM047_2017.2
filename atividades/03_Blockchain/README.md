@@ -1,5 +1,7 @@
 # DESCRIÇÃO COMPLEMENTAR DA ATIVIDADE
 
+## Avisos
+
 * A função ICHashCreate recebe 3 parâmetros: 1 ICHash com o nome **hash**, 1 ICBlockData com o nome **data**, e 1 ICHash com o nome **previousHash**. Esta função cria uma hash, apartir dos parâmetros **data** e **previousHash**. Esta hash criada nesta função é armazenada no parametro **hash**.
 * O bloco gênesis, deve ter sua **hash** gerada com um valor de **data** qualquer e com a **previousHash** igual a zero.
 
