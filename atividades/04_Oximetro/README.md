@@ -1,8 +1,6 @@
 # CaduceOz
 ![](https://github.com/tenoriomatheus/ECOM047_2017.2/blob/master/atividades/04_Oximetro/logo.png)
 
-## Descrição
-
 Este projeto consiste em um oximetro portátil. Este Oxímetro possui uma bateria recarregável de 1200mAh. Esta bateria pode ser recarregada através de uma entrada micro-USB. Este dispositivo possui alguns meios de intereção com o usuário, tal como:
 * **Display** - responsável para mostrar ao usuário os valores de SpO2 (Saturação do Oxigênio no Sangue) e BPM (Batimentos por minutos) amostrados.
 * **Botões** - responsáveis por:
