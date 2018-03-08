@@ -1,5 +1,5 @@
 # CaduceOz
-![logo](atividades/04_Oximetro/logo.png)
+![](https://github.com/tenoriomatheus/ECOM047_2017.2/blob/master/atividades/04_Oximetro/logo.png)
 
 ## Descrição
 
