@@ -1,5 +1,5 @@
 # CaduceOz
-made by Mercy Health S.A.
+![logo](atividades/04_Oximetro/logo.png)
 
 ## Descrição
 
