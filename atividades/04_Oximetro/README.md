@@ -23,7 +23,7 @@ Este projeto consiste em um oximetro portátil. Este Oxímetro possui uma bateri
 
 ## Requisitos Não-Funcionais
 
-* O custo máximo de 1 unidade do projeto (produzindo 1 unidade no total) deve ser de R$XXX,XX
-* O custo máximo de 1 unidade do projeto (produzindo 1000 unidade no total) deve ser de R$XXX,XX
-* O consumo máximo de energia do projeto deve ser no máximo XXXmAh, considerando o dispositivo no modo execução.
+* O custo máximo de 1 unidade do projeto (produzindo 1 unidade no total, com frete) deve ser de R$351,00
+* O custo máximo de 1 unidade do projeto (produzindo 1000 unidade no total, com frete) deve ser de R$340,00
+* O consumo máximo de energia do projeto deve ser no máximo 19mA, considerando o dispositivo no modo execução.
 * O tempo máximo de entrega deste projeto é de 2 semanas
