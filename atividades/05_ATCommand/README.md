@@ -1,6 +1,6 @@
-#Comando AT
+# Comando AT
 
-##Descrição
+## Descrição
 
 Nesta atividade vamos implementar uma biblioteca capaz de realizar a comunicação entre um computador e um 
 microcontrolador, através do padrão Comando AT.
@@ -34,7 +34,7 @@ O registro de um comando na biblioteca é feito através do:
 Para testar esta biblioteca, podem ser utilizadas os arquivos de teste ‘ICLEDMatrix’, disponibilizados na pasta 
 ‘05_ATCommand’, no GitHub da disciplina. __Este código deve ser implementado na microbit, utilizando zephyr__.
 
-##Entregáveis
+## Entregáveis
 
 O código fonte contendo:
 
@@ -44,7 +44,7 @@ O código fonte contendo:
 A entrega deve ser feita no classroom através de: uma pasta zipada (com o nome do aluno), ou um link para um 
 repositório do GitHub.
 
-##Anulação da Atividade
+## Anulação da Atividade
 
 * Cópia de outro aluno
 * Falta do nome do aluno no código fonte
