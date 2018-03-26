@@ -1,7 +1,5 @@
 # CaduceOz
-![logo](atividades/04_Oximetro/logo.png)
-
-## Descrição
+![](https://github.com/tenoriomatheus/ECOM047_2017.2/blob/master/atividades/04_Oximetro/logo.png)
 
 Este projeto consiste em um oximetro portátil. Este Oxímetro possui uma bateria recarregável de 1200mAh. Esta bateria pode ser recarregada através de uma entrada micro-USB. Este dispositivo possui alguns meios de intereção com o usuário, tal como:
 * **Display** - responsável para mostrar ao usuário os valores de SpO2 (Saturação do Oxigênio no Sangue) e BPM (Batimentos por minutos) amostrados.
@@ -25,7 +23,7 @@ Este projeto consiste em um oximetro portátil. Este Oxímetro possui uma bateri
 
 ## Requisitos Não-Funcionais
 
-* O custo máximo de 1 unidade do projeto (produzindo 1 unidade no total) deve ser de R$XXX,XX
-* O custo máximo de 1 unidade do projeto (produzindo 1000 unidade no total) deve ser de R$XXX,XX
-* O consumo máximo de energia do projeto deve ser no máximo XXXmAh, considerando o dispositivo no modo execução.
+* O custo máximo de 1 unidade do projeto (produzindo 1 unidade no total, com frete) deve ser de R$351,00
+* O custo máximo de 1 unidade do projeto (produzindo 1000 unidade no total, com frete) deve ser de R$340,00
+* O consumo máximo de energia do projeto deve ser no máximo 19mA, considerando o dispositivo no modo execução.
 * O tempo máximo de entrega deste projeto é de 2 semanas
