@@ -16,69 +16,124 @@
 #include <device.h>
 #include <display/mb_display.h>
 
-#include "ICStatus.h"
+#define ENOT_INIT       1
+#define EHOUR_INVALID   2
+#define ENOT_ASCII      3
+#define EDATE_FMT_WRONG 4
+#define ESIZE_WRONG     5
 
 /*!
  * @brief This function initialize the module: "LED Matrix"
  * @return kOK if the module has not been initialized. And, kFAIL otherwise.
  */
-ICStatus ICLEDMatrixInit(void);
+int IC_LED_matrix_init(void);
 
-/*!
- * @at_command AT+HEART
- * @brief This function draw a heart in the LED Matrix. This heart will remain in the LED Matrix, by default, 5 seconds.
+/*! 
+ * @brief
+ * This function draw a heart in the LED Matrix. This heart will remain in the
+ * LED Matrix, by default, 5 seconds.
+ *
+ * AT+HEART
+ *
+ * @param data - An array of pointers of type uint8_t
+ * @param size - The size of array 'data'.
  * @return kOK if the module has been initialized. And kFAIL, otherwise.
  */
-ICStatus ICLEDMatrixDrawHeart(void);
+int IC_LED_matrix_draw_heart(uint8_t **data, uint8_t size);
 
 /*!
- * @at_command AT+TIME=<int>
- * @brief This function change the time the heart remains in the LED Matrix
- * @param seconds - A unsigned integer that represent the seconds in which the heart will remain in the LED matrix.
+ * @
+ * @brief
+ * This function change the time the heart remains in the LED Matrix
+ *
+ * AT+TIME=<int>
+ *
+ * @param data - An array of pointers of type uint8_t
+ * @param size - The size of array 'data'.
+ * 1º PARAMETRO: seconds - A unsigned integer that represent the seconds in
+ *                         which the heart will remain in the LED matrix.
  * @return kOK if the module has been initialized. And kFAIL, otherwise.
  */
-ICStatus ICLEDMatrixTimeActive(uint8_t seconds);
+int IC_LED_matrix_set_time_active(uint8_t **data, uint8_t size);
 
 /*!
- * @at_command AT+HOURS=<int>,<int>
- * @brief This function will draw, in the LED Matrix, a hour and a minute. Each number will be shown sequentially, and
- *        will stay in the LED Matrix for 1 seconds. The hour will be followed by ":".
- * @param hour - A unsigned integer that represent the hours. This value must be less than 24.
- * @param min - A unsigned integer that represent the minutes. This value must be less than 60.
- * @return kOK if the module has been initialized and the conditions of above params has been met. And kFAIL, otherwise.
+ * @at_command
+ * @brief
+ * This function will draw, in the LED Matrix, a hour and a minute. Each number
+ * will be shown sequentially, and will stay in the LED Matrix for 1 seconds.
+ * The hour will be followed by ":".
+ *
+ * AT+HOURS=<int>,<int>
+ *
+ * @param data - An array of pointers of type uint8_t
+ * @param size - The size of array 'data'.
+ * 1º PARAMETRO: hour - A unsigned integer that represent the hours. This value
+ *                      must be less than 24.
+ * 2º PARAMETRO: min - A unsigned integer that represent the minutes. This
+ *                     value must be less than 60.
+ * @return kOK if the module has been initialized and the conditions of above
+ *         params has been met. And kFAIL, otherwise.
  */
-ICStatus ICLEDMatrixDrawHours(uint8_t hour, uint8_t min);
+int IC_LED_matrix_draw_hours(uint8_t **data, uint8_t size);
 
 /*!
- * @at_command AT+STRING=<str>
- * @brief This function will draw, in the LED Matrix, an any string. Each character will be shown sequentially, and
- *        will stay in the LED Matrix for 1 seconds.
- * @param str - A generic string. The characters of this string must be between 0x20 and 0x7E.
- * @return kOK if the module has been initialized and the conditions of above params has been met. And kFAIL, otherwise.
+ * @brief
+ * This function will draw, in the LED Matrix, an any string. Each character
+ * will be shown sequentially, and will stay in the LED Matrix for 1 seconds.
+ *
+ * AT+STRING=<str>
+ *
+ * @param data - An array of pointers of type uint8_t
+ * @param size - The size of array 'data'.
+ * 1º PARAMETRO: str - A generic string. The characters of this string must be
+ *                     between 0x20 and 0x7E.
+ * @return kOK if the module has been initialized and the conditions of above
+ *         params has been met. And kFAIL, otherwise.
  */
-ICStatus ICLEDMatrixDrawString(const char *str);
+int IC_LED_matrix_draw_string(uint8_t **data, uint8_t size);
 
 /*!
- * @at_command AT+NAME=<str>,<str>
- * @brief This function will draw, in the LED Matrix: a name and a surname. Each character will be shown sequentially, and
- *        will stay in the LED Matrix for 1 seconds. The name and surname will be separated by a hyphen.
- * @param name - A string that represent a name. The characters of this string must be between 0x20 and 0x7E.
- * @param surname - A string that represent a surname. The characters of this string must be between 0x20 and 0x7E.
- * @return kOK if the module has been initialized and the conditions of above params has been met. And kFAIL, otherwise.
+ * @brief
+ * This function will draw, in the LED Matrix: a name and a surname. Each
+ * character will be shown sequentially, and will stay in the LED Matrix for
+ * 1 seconds. The name and surname will be separated by a hyphen.
+ *
+ * AT+NAME=<str>,<str>
+ *
+ * @param data - An array of pointers of type uint8_t
+ * @param size - The size of array 'data'.
+ * 1º PARAMETRO: name - A string that represent a name. The characters of this
+ *                      string must be between 0x20 and 0x7E.
+ * 2º PARAMETRO: surname - A string that represent a surname. The characters
+ *                         of this string must be between 0x20 and 0x7E.
+ * @return kOK if the module has been initialized and the conditions of above
+ *         params has been met. And kFAIL, otherwise.
  */
-ICStatus ICLEDMatrixDrawName(const char *name, const char *surname);
+int IC_LED_matrix_draw_name(uint8_t **data, uint8_t size);
 
 /*!
- * @at_command AT+DATE=<int>,<str>,<int>
- * @brief This function will draw, in the LED Matrix, a date. Each character (or number) will be
- *        shown sequentially, and will stay in the LED Matrix for 1 seconds. The day, the month and the year will be
- *        separated by a hyphen.
- * @param day - A unsigned integer that represent the day of a date. This value must be less than 32.
- * @param month - A string that represent the month of a date. The length of this string must be less than 3 and the
- *                characters of this string must be between 0x20 and 0x7E.
- * @param year - A unsigned integer that represent the year of a date.
- * @return kOK if the module has been initialized and the conditions of above params has been met. And kFAIL, otherwise.
+ * @brief
+ * This function will draw, in the LED Matrix, a date. Each character
+ * (or number) will be shown sequentially, and will stay in the LED Matrix for
+ * 1 seconds. The day, the month and the year will be separated by a hyphen.
+ *
+ * AT+DATE=<int>,<str>,<int>
+ *
+ * @param data - An array of pointers of type uint8_t
+ * @param size - The size of array 'data'.
+ * 1º PARAMETRO: day - A unsigned integer that represent the day of a date.
+ *                     This value must be less than 32.
+ * 2º PARAMETRO: month - A string that represent the month of a date. The
+ *                       length of this string must be less than 3 and the
+ *                       characters of this string must be between 0x20 and
+ *                       0x7E.
+ * 3º PARAMETRO: year - A unsigned integer that represent the first byte of a
+ *                      year of a date.
+ * 4º PARAMETRO: year - A unsigned integer that represent the second byte of a
+ *                      year of a date.
+ * @return kOK if the module has been initialized and the conditions of above
+ *         params has been met. And kFAIL, otherwise.
  */
-ICStatus ICLEDMatrixDrawDate(uint8_t day, const char *month, uint16_t year);
+int IC_LED_matrix_draw_date(uint8_t **data, uint8_t size);
 
 #endif //PROJECT_ICLEDMATRIX_H
